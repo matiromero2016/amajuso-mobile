@@ -1,0 +1,12 @@
+<ion-grid fixed>
+  <ion-row>
+
+    <ion-col size="12"
+              *ngFor="let article of articles">
+
+    <app-article-card [article]="article"></app-article-card>
+    
+    </ion-col>
+
+  </ion-row>
+</ion-grid>

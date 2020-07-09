@@ -1,0 +1,114 @@
+<ion-header class="ion-text-center">
+	<ion-toolbar color="dark">
+		<ion-buttons slot="start">
+      <ion-back-button defaultHref="login"></ion-back-button>
+		</ion-buttons>
+		<ion-title class="ion-rob">
+			Amajuso
+	</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-center ion-padding background-amajuso">
+	<!-- <ion-item>
+		<ion-img class="menuLogo" src="assets/Logo_01.png"></ion-img>
+	</ion-item> -->
+		<div>
+		
+	<h3>Cree su cuenta</h3>
+	<form [formGroup]="userForm" (ngSubmit)="signUp()">
+		<ion-grid>
+			<ion-row>
+				<ion-col class="ion-text-left">
+					<ion-label class="inputLabel" position="stacked">nombre</ion-label>
+					<!-- <span *ngIf="getValidator('name')">*</span> -->
+					<ion-input clearInput class="roundCorners textPrimary" name="name" formControlName="name" required></ion-input>
+					<span class="textDanger" *ngIf="displayMessage.name">
+                        <p [innerHTML]="displayMessage.name"></p>
+                    </span>
+					<!-- <app-validation-custom-message *ngIf="!validateName() && userForm.value.name.length > 0" message="informe seu nome e sobrenome"></app-validation-custom-message> -->
+					<!-- <app-validation-message [form]="userForm" field="name"></app-validation-message> -->
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col class="ion-text-left">
+					<ion-label class="inputLabel" position="stacked">apellido</ion-label>
+					<!-- <span *ngIf="getValidator('name')">*</span> -->
+					<ion-input clearInput class="roundCorners textPrimary" name="lastName" formControlName="lastName" required></ion-input>
+					<span class="textDanger" *ngIf="displayMessage.lastName">
+                        <p [innerHTML]="displayMessage.lastName"></p>
+                    </span>
+					<!-- <app-validation-custom-message *ngIf="!validateName() && userForm.value.name.length > 0" message="informe seu nome e sobrenome"></app-validation-custom-message> -->
+					<!-- <app-validation-message [form]="userForm" field="name"></app-validation-message> -->
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col class="ion-text-left">
+					<ion-label class="inputLabel" position="stacked">email</ion-label>
+					<!-- <span *ngIf="getValidator('email')">*</span> -->
+					<ion-input class="roundCorners textPrimary" formControlName="email" name="email" type="email" inputmode="email" required></ion-input>
+					<span class="textDanger" *ngIf="displayMessage.email">
+                        <p [innerHTML]="displayMessage.email"></p>
+                    </span>
+				</ion-col>
+			</ion-row>
+			
+			<ion-row>
+				<ion-col class="ion-text-left">
+					<ion-label class="inputLabel" position="stacked">celular</ion-label>
+					<!-- <span *ngIf="getValidator('phone')">*</span> -->
+					<ion-input class="roundCorners textPrimary" formControlName="phone" name="phone" type="tel" maxlength="15"></ion-input>
+					<span class="textDanger" *ngIf="displayMessage.phone">
+                        <p [innerHTML]="displayMessage.phone"></p>
+                    </span>
+				</ion-col>
+			</ion-row>
+
+			<ion-row>
+				<ion-col class="ion-text-left">
+					<ion-label class="inputLabel" position="stacked">contraseña</ion-label>
+					<!-- <span *ngIf="getValidator('password')">*</span> -->
+					<ion-input class="roundCorners textPrimary inputPassword" formControlName="password" name="password" type="password"></ion-input>
+					<span class="textDanger" *ngIf="displayMessage.password">
+                        <p [innerHTML]="displayMessage.password"></p>
+                    </span>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col class="ion-text-left">
+					<ion-label class="inputLabel" position="stacked">Reescriba la contraseña</ion-label>
+					<!-- <span *ngIf="getValidator('repassword')">*</span> -->
+					<ion-input class="roundCorners textPrimary inputPassword" formControlName="repassword" name="repassword" type="password"></ion-input>
+					<span class="textDanger" *ngIf="displayMessage.repassword">
+                        <p [innerHTML]="displayMessage.repassword"></p>
+                    </span>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col size="12">
+					<ion-button type="submit" class="roundCorners" style="text-transform: none;" size="large" fill="outline" expand="block">Avanzar</ion-button>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col size="12">
+					O ingrese con:
+				</ion-col>
+      </ion-row>
+      
+			<ion-row>
+				<ion-col> 
+					<div class="facebook-button social-button roundCorners">
+						<ion-icon src="assets/facebook-logo.svg" name="add"></ion-icon>
+					</div>
+				</ion-col>
+				<ion-col >
+					<div class="google-button social-button roundCorners centeredVerticalContent">
+						<ion-icon src="assets/google-logo.svg" name="add"></ion-icon>
+					</div>
+        </ion-col>
+        
+			</ion-row>
+		</ion-grid>
+	</form>
+</div>
+</ion-content>

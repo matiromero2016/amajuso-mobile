@@ -1,0 +1,51 @@
+ion-input, ion-select {
+	background-color: transparent;
+	// border: solid 1px #DFDFDF;
+	border-bottom: solid 1px #DFDFDF;
+	font-size: 15px;
+	--padding-start: 10px;
+	--padding-end: 10px;
+	height: 45px;
+}
+
+
+
+// ion-toolbar { 
+// 	--ion-background-color:linear-gradient(45deg, #04AC8D, #126488, #1C3587) !important;
+// 	--color: var(--ion-color-light);
+// }
+
+// ion-content.background-amajuso{
+//     --ion-background-color:linear-gradient(45deg, #04AC8D, #126488, #1C3587);
+// }
+
+
+.textDanger {
+		color: var(--ion-color-danger);
+	}
+
+
+.social-button {
+	// width: 145px;
+	height: 45px;
+}
+
+.facebook-button {
+	background-color: #3B5998;
+	// float: right;
+}
+
+.google-button {
+	background-color: white;
+	// float: left;
+}
+
+.google-button ion-icon {
+	width: 100%;
+	height: 31px;
+}
+
+.facebook-button ion-icon{
+	width: 100%;
+	height: 100%;
+}

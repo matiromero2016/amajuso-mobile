@@ -1,0 +1,51 @@
+
+ion-input, ion-select {
+	background-color: transparent;
+	// border: solid 1px #DFDFDF;
+	border-bottom: solid 1px #DFDFDF;
+	font-size: 15px;
+	--padding-start: 10px;
+	--padding-end: 10px;
+	height: 45px;
+}
+
+div {
+	margin-top:10px;
+}
+
+ion-item {
+	--background: transparent;
+	--border-color: transparent;
+	ion-img {
+	padding-top: 10px;
+	width: 200px;
+}
+}
+.textDanger {
+    color: var(--ion-color-danger);
+}
+.social-button {
+	// width: 145px;
+	height: 45px;
+	cursor:pointer;
+}
+
+.facebook-button {
+	background-color: #3B5998;
+	// float: right;
+}
+
+.google-button {
+	background-color: white;
+	// float: left;
+}
+
+.google-button ion-icon {
+	width: 100%;
+	height: 31px;
+}
+
+.facebook-button ion-icon{
+	width: 100%;
+	height: 100%;
+}

@@ -1,0 +1,40 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="amajuso">
+    <ion-buttons slot="start">
+			<ion-button (click)="dismissModal()">
+				<ion-icon name="arrow-undo-outline"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+    <ion-title></ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="star" class="favorite"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="amajuso">
+	<ion-card color="amajusoLight">
+		<ion-card-header>
+			<ion-grid>
+				<ion-row>
+					<ion-col>
+						<ion-card-subtitle>
+							{{article.getDateFormated()}}
+						</ion-card-subtitle>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+			<ion-card-title>{{article.title}}</ion-card-title>
+		</ion-card-header>
+		<ion-card-content>
+			<div class="ql-snow">
+				<div class="ql-editor">
+					<div [innerHTML]="article.content"></div>
+				</div>
+			</div>
+		</ion-card-content>
+	</ion-card>
+</ion-content>
+

@@ -1,0 +1,23 @@
+<ion-card>
+  <ion-card-header>
+    <ion-item lines="none">
+    <ion-card-subtitle>
+      Por {{ article.user.name }} {{ article.user.lastName }}
+    </ion-card-subtitle>
+    <ion-icon (click)="openPopover($event)" color="amajuso" name="options-outline" slot="end"></ion-icon>
+  </ion-item>
+    <ion-card-title (click)="openArticle()">{{ article.title }} </ion-card-title>
+  </ion-card-header>
+
+  <!-- <ion-img *ngIf="noticia.urlToImage"
+            (click)="abrirNoticia()"
+            class="animated fadeIn fast"
+            [src]="noticia.urlToImage"></ion-img> -->
+
+  <ion-card-content>
+    <div [innerHTML]="article.content.length > 100 ? article.content.substr(0, 100) + '...': article.content">
+      <!-- {{ article.content.length > 100 ? article.content.substr(0, 100) + '...': article.content }} -->
+    </div>
+  </ion-card-content>
+
+</ion-card>

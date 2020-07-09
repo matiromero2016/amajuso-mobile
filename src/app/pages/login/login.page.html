@@ -1,0 +1,50 @@
+<ion-content class="ion-text-center ion-padding background-amajuso">
+	<ion-item>
+		<ion-img class="menuLogo" src="assets/Logo_01.png"></ion-img>
+	</ion-item>
+		<div>
+	<form [formGroup]="userForm" (ngSubmit)="login()">
+		<ion-grid>
+			<ion-row>
+				<ion-col class="ion-text-left">
+					<ion-label clearInput class="inputLabel" position="stacked">email</ion-label>
+					<!-- <span *ngIf="getValidator('email')">*</span> -->
+					<ion-input class="roundCorners textPrimary" formControlName="email" name="email" type="email" inputmode="email" required></ion-input>
+					<span class="textDanger" *ngIf="displayMessage.email">
+                        <p [innerHTML]="displayMessage.email"></p>
+                    </span>
+				</ion-col>
+			</ion-row>			
+			
+			<ion-row>
+				<ion-col class="ion-text-left">
+					<ion-label class="inputLabel" position="stacked">contraseña</ion-label>
+					<!-- <span *ngIf="getValidator('password')">*</span> -->
+					<ion-input class="roundCorners textPrimary inputPassword" formControlName="password" name="password" type="password"></ion-input>
+					<span class="textDanger" *ngIf="displayMessage.password">
+                        <p [innerHTML]="displayMessage.password"></p>
+                    </span>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col size="12">
+					<ion-button type="submit" class="roundCorners" style="text-transform: none;" size="large" fill="outline" expand="block">Ingresar</ion-button>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col size="12">
+					O ingrese con:
+				</ion-col>
+      </ion-row>
+      
+			<ion-row>
+				<ion-col> 
+					<div class="facebook-button social-button roundCorners" (click)="loginFacebook()">
+						<ion-icon src="assets/facebook-logo.svg" name="add"></ion-icon>
+					</div>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</form>
+</div>
+</ion-content>

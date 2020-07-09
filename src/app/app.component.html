@@ -1,0 +1,52 @@
+<ion-app>
+    <!-- <ion-split-pane contentId="content">  -->
+    <ion-menu color="amajuso" side="start" menuId="mainMenu" contentId="content">
+      <ion-header>
+        <ion-toolbar color="amajuso">
+          <ion-title> Amajuso</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          
+          <ion-item href='https://mev.scba.gov.ar/' lines='full' target='_blank' detail>
+            <ion-label>Mesa de Entrada Virtual (MEV)</ion-label>
+          </ion-item>
+          
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+  <!-- </ion-split-pane>  -->
+
+  <!-- <ion-header>
+    <ion-toolbar color="primary"> 
+
+    </ion-toolbar>
+  </ion-header> -->
+  <ion-router-outlet id="content"></ion-router-outlet>
+
+  
+  <ion-tabs>
+    <ion-tab-bar color="amajuso" slot="bottom">
+
+      <ion-tab-button tab="home">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-tab-button>
+      
+      <ion-tab-button tab="news">
+        <ion-icon name="newspaper-outline"></ion-icon>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="create-article">
+        <ion-icon name="newspaper-outline"></ion-icon>
+        <ion-badge color="primary">+</ion-badge>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="login">
+        <ion-icon name="person-circle"></ion-icon>
+      </ion-tab-button>
+      
+    </ion-tab-bar>
+  </ion-tabs>
+
+</ion-app>

@@ -1,0 +1,19 @@
+<!-- Default Segment -->
+<ion-toolbar color="amajusoLight">
+  <ion-segment
+   scrollable 
+   [value]="selectedSegment"
+   (ionChange)="segmentChanged($event)">
+    <ion-segment-button 
+    *ngFor="let cat of categories"
+    [value]="cat.title">
+      <ion-label>{{cat.title}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  </ion-toolbar>
+
+<ion-content color="amajuso">
+  
+      <app-articles [articles]="articles"></app-articles>
+      
+</ion-content>

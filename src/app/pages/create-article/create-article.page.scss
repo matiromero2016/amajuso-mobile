@@ -1,0 +1,14 @@
+ion-input, ion-select {
+	background-color: transparent !important;
+	// border: solid 1px #DFDFDF;
+	// border-bottom: solid 1px #DFDFDF;
+	border: none; 
+	font-size: 15px;
+	--padding-start: 10px;
+	--padding-end: 10px;
+	height: 45px;
+}
+ion-item {
+    --background: none;
+}
+
