@@ -11,15 +11,16 @@
 <!-- Default Segment -->
 <ion-toolbar color="amajuso">
   <ion-segment value="Noticias" (ionChange)="segmentChanged()">
-    <ion-segment-button *ngFor="let name of ['Noticias', 'Facebook', 'Twitter']"
+    <ion-segment-button *ngFor="let name of ['Noticias', 'Facebook', 'Twitter', 'Youtube']"
       value="{{name}}">
       <ion-label>{{name}}</ion-label>
     </ion-segment-button>
   </ion-segment>
   </ion-toolbar>
 
-<ion-content>
+<ion-content color="amajuso">
   <app-article-timeline *ngIf="selectedSegment === 'Noticias'"></app-article-timeline>
   <app-facebook-timeline *ngIf="selectedSegment === 'Facebook'"></app-facebook-timeline>
   <app-twitter-timeline *ngIf="selectedSegment === 'Twitter'"></app-twitter-timeline>
+  <app-youtube-timeline *ngIf="selectedSegment === 'Youtube'"></app-youtube-timeline>
 </ion-content>

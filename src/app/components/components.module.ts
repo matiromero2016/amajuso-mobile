@@ -7,6 +7,7 @@ import { Router, RouterModule } from '@angular/router';
 import { ArticleCardComponent } from './cards/article-card/article-card.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { ArticleDetailCardComponent } from './cards/article-detail-card/article-detail-card.component';
+import { YoutubeTimelineComponent } from './youtube-timeline/youtube-timeline.component';
 
 
 
@@ -15,6 +16,7 @@ import { ArticleDetailCardComponent } from './cards/article-detail-card/article-
     ArticleTimelineComponent,
     FacebookTimelineComponent,
     TwitterTimelineComponent,
+    YoutubeTimelineComponent,
     ArticlesComponent,
     ArticleCardComponent,
     ArticleDetailCardComponent
@@ -27,6 +29,7 @@ import { ArticleDetailCardComponent } from './cards/article-detail-card/article-
     ArticleTimelineComponent,
     FacebookTimelineComponent,
     TwitterTimelineComponent,
+    YoutubeTimelineComponent,
     ArticlesComponent,
     ArticleCardComponent,
     ArticleDetailCardComponent

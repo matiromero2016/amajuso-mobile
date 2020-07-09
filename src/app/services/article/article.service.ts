@@ -58,9 +58,7 @@ export class ArticleService extends BaseService{
   }
   
   addArticle(article) {
-    console.log('article a insertar', article);
     const accessToken = this.authService.getToken();
-    console.log('ACCESS TOKEN', accessToken);
     const httpOptions = {
       headers: new HttpHeaders({
         "Authorization": "Bearer " + accessToken

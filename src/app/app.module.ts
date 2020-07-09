@@ -6,6 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Facebook } from '@ionic-native/facebook/ngx';
+import {SocialSharing} from '@ionic-native/social-sharing/ngx';
 
 // import {QuillModule} from 'ngx-quill';
 
@@ -31,7 +32,8 @@ import { ComponentsModule } from './components/components.module';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Facebook
+    Facebook,
+    SocialSharing
   ],
   bootstrap: [AppComponent]
 })
