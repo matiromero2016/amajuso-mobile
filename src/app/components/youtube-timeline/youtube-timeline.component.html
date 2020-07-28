@@ -2,17 +2,22 @@
     <ion-item-sliding class="ion-margin-vertical" *ngFor="let video of videos">
     <ion-item lines="full" color="youtube" detail="false">
         <ion-thumbnail slot="start">
-            <img [src]="video.snippet.thumbnails.default.url">
+            <img [src]="video.imageUrl">
           </ion-thumbnail>
           <div class="video-description">
-          <small color="danger">{{formatDate(video.snippet.publishedAt)}}</small>
-          <ion-label stacked>{{video.snippet.title}}</ion-label>
+          <small color="danger">{{video.getDateFormated()}}</small>
+          <ion-label stacked>{{video.title}}</ion-label>
             </div>
             <ion-icon slot="end" name="play-circle-outline"></ion-icon>
     </ion-item>
-    <ion-item-options side="start">
+    <ion-item-options side="end">
         <ion-item-option color="success" (click)="shareWhatsapp(video)">
           <ion-icon slot="icon-only" name="logo-whatsapp"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+      <ion-item-options side="start">
+        <ion-item-option color="primary" (click)="shareFacebook(video)">
+          <ion-icon slot="icon-only" name="logo-facebook"></ion-icon>
         </ion-item-option>
       </ion-item-options>
 </ion-item-sliding>

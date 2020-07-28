@@ -7,6 +7,7 @@ import { CustomValidators } from 'ng2-validation';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { RouterModule, Router } from '@angular/router';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook/ngx';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,7 @@ export class LoginPage implements OnInit {
               private loadingCtrl: LoadingController,
               private fb: FormBuilder,
               private authService: AuthService,
+              private userService: UserService,
               private router: Router,
               private facebook: Facebook) {
                 this.validationMessages = {
@@ -67,15 +69,18 @@ export class LoginPage implements OnInit {
       let loading = await this.presentLoading();
       let request = this.authService.login(this.userForm.value.email, this.userForm.value.password);
       request.subscribe(data=> {
-        this.authService.afterLogin(data['accessToken'], data['refreshToken'], data['expiresIn']);
         if (data['accessToken'] && data['refreshToken']) {
+        this.authService.afterLogin(data['accessToken'], data['refreshToken'], data['expiresIn']);
+          this.userService.refreshUserData().subscribe(()=> {
           this.router.navigate(['/home'], {replaceUrl: true});
           loading.dismiss();
-					// this.handleLoginSucess();
-				} else {
+        })
+      }
+        else {
           loading.dismiss();
+        }
+					// this.handleLoginSucess();
 					// this.handleLoginError(null);
-				}
       }, error => loading.dismiss());  
   }
 

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { map, share } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +15,12 @@ export class YoutubeService {
 
    }
 
-   getLastVideos() {
-     return this.http.get(this.urlApi + `search?channelId=${this.channelId}&part=snippet&order=date&key=${this.apiKey}&type=video`)
-     .pipe();
+   getVideos() : Observable<any> {
+    let params = new HttpParams()
+    .set('page', '1')
+    .set('pagesize', '100')
+    
+     return this.http.get(environment['API_URL'] + '/api/youtube', {params: params});
 
    }
    

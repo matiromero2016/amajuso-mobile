@@ -7,14 +7,16 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Facebook } from '@ionic-native/facebook/ngx';
 import {SocialSharing} from '@ionic-native/social-sharing/ngx';
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 // import {QuillModule} from 'ngx-quill';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SafePipe } from './safe.pipe';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ComponentsModule } from './components/components.module';
+import { Interceptor } from './auth/interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,9 +33,12 @@ import { ComponentsModule } from './components/components.module';
   providers: [
     StatusBar,
     SplashScreen,
+    GoogleMaps,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Facebook,
-    SocialSharing
+    SocialSharing,
+    {provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true}
+
   ],
   bootstrap: [AppComponent]
 })

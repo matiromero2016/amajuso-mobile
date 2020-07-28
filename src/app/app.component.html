@@ -19,10 +19,10 @@
             <ion-label>Colegio de Abogados MDP</ion-label>
           </ion-item>
           <ion-item href='http://www.scba.gov.ar/' lines='full' target='_blank' detail>
-            <ion-label>Suprema Corte de Justicia</ion-label>
+            <ion-label>Suprema Corte de Justicia de la provincia de Buenos Aires</ion-label>
           </ion-item>
           <ion-item href='https://www.csjn.gov.ar/' lines='full' target='_blank' detail>
-            <ion-label>Suprema Corte de Justicia de la Nación</ion-label>
+            <ion-label>Corte Suprema de Justicia de la Nación</ion-label>
           </ion-item>
           <ion-item href='https://www.argentina.gob.ar/srt' lines='full' target='_blank' detail>
             <ion-label>Superintendencia de Riesgos del Trabajo</ion-label>
@@ -68,21 +68,8 @@
   <ion-tabs>
     <ion-tab-bar color="amajuso" slot="bottom">
 
-      <ion-tab-button tab="home">
-        <ion-icon name="home-outline"></ion-icon>
-      </ion-tab-button>
-      
-      <ion-tab-button tab="news">
-        <ion-icon name="newspaper-outline"></ion-icon>
-      </ion-tab-button>
-  
-      <ion-tab-button tab="create-article">
-        <ion-icon name="newspaper-outline"></ion-icon>
-        <ion-badge color="primary">+</ion-badge>
-      </ion-tab-button>
-  
-      <ion-tab-button tab="login">
-        <ion-icon name="person-circle"></ion-icon>
+      <ion-tab-button *ngFor="let page of pages" [tab]="page.url">
+        <ion-icon [name]="page.icon"></ion-icon>
       </ion-tab-button>
       
     </ion-tab-bar>

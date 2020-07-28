@@ -5,28 +5,36 @@ import { Observable } from 'rxjs';
 import { catchError, map} from 'rxjs/operators';
 import { IUser } from 'src/app/interfaces/user.interface';
 import { BaseService } from '../base.service';
+import { UserService } from '../user/user.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService extends BaseService{
+
 	readonly accessToken = "accessToken";
 	readonly refreshToken = "refreshToken";
 	readonly expiresIn = "expiresIn";
-  private loginData: {
+
+ 	private loginData: {
 		accessToken: string,
 		refreshToken: string,
 		expiresIn: number
-  };
-  constructor(private http : HttpClient) {
-	super();
-    this.loginData = {
+	  };
+	  
+	  constructor(
+		private http : HttpClient, 
+		private userService: UserService, 
+		private router : Router) {
+		super();
+    	this.loginData = {
 			accessToken: '',
 			refreshToken: '',
 			expiresIn: null
 		};
-	this.getInitialTokenCredentials();
-   }
+		this.getInitialTokenCredentials();
+    }
 
    login (email, password) : Observable<any>{
     this.loginData.accessToken = null;
@@ -42,14 +50,32 @@ export class AuthService extends BaseService{
     return request;
    }
 
-   afterLogin(accessToken: string, refreshToken: string, expiresIn: number ) {
+   async loginWithRefreshToken() {
+	const loginData = {
+		userID: this.userService.getUserData()["Email"],
+		accessKey: this.getRefreshToken(),
+		grantType: 'refresh_token'
+	}
+	   const data = await this.http.post(environment['API_URL'] + '/api/Login', loginData).toPromise();
+	   if (data['accessToken'] && data['refreshToken']) {
+		   this.afterLogin(data['accessToken'], data['refreshToken'], data['expiresIn']);
+		await this.userService.refreshUserData().toPromise();
+		// this.isLoggedIn.next(true);
+
+		return data;
+	} else {
+		return false;
+	}
+   }
+
+   afterLogin(accessToken: string, refreshToken: string, expiresIn: number ) : void {
 		this.setToken(accessToken);
 		this.setRefreshToken(refreshToken);
 		this.setExpiresIn(expiresIn);
 	}
 
 	signUp(usuario : IUser) : Observable<IUser> {
-		usuario.role = "Administrator";
+		usuario.role = "Visitor";
 		usuario.terms = 1;
 		let response =this.http.post(environment.API_URL + '/api/users', usuario)
 			.pipe(
@@ -59,18 +85,30 @@ export class AuthService extends BaseService{
 				return response;
 	}
 
+	async logout() {
+		try {
+			await this.http.post(environment['API_URL'] + '/api/Login/logout', {}).toPromise();
+			// this.isLoggedIn.next(false);
+			this.clearData();
+			this.router.navigate(['/login'], {replaceUrl: true});
+		} catch (error) {
+			console.error('logout:', error);
+			// this.isLoggedIn.next(false);
+			this.clearData();
+			this.router.navigate(['/login'], {replaceUrl: true});
+		}
+	}
+
   getInitialTokenCredentials() : boolean {
 	  this.loginData = {
 		  accessToken: localStorage.getItem(this.accessToken),
 		  refreshToken: localStorage.getItem(this.refreshToken),
 		  expiresIn: Number(localStorage.getItem(this.expiresIn)),
 	  }
-	  console.log('dataLogin', this.loginData );
 	  return this.loginData.accessToken ? true : false;
   }
 
   getToken() {
-	  console.log('dataLogin.AccessToken', this.loginData.accessToken);
 	  return this.loginData.accessToken;
   }
 
@@ -93,5 +131,9 @@ export class AuthService extends BaseService{
 		this.loginData.expiresIn = expiresIn;
 		localStorage.setItem('expiresIn', this.loginData.expiresIn.toString());
 	}
+  clearData() {
+		this.loginData = null;
+		localStorage.clear();
+	}	
   
 }
